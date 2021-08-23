@@ -1,0 +1,28 @@
+{
+  "name": "young-teach",
+  "version": "1.0.0",
+  "description": "\\Young教我/",
+  "main": "index.js",
+  "dependencies": {
+    "@babel/core": "^7.15.0",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^6.2.0",
+    "lodash": "^4.17.21",
+    "style-loader": "^3.2.1",
+    "webpack-cli": "^4.8.0"
+  },
+  "devDependencies": {
+    "html-loader": "^2.1.2",
+    "html-webpack-plugin": "^5.3.2",
+    "sass": "^1.38.0",
+    "sass-loader": "^12.1.0",
+    "webpack": "^5.51.1",
+    "webpack-dev-server": "^4.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --mode development"
+  },
+  "author": "xiao xigua",
+  "license": "ISC"
+}
