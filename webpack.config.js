@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const SitemapPlugin = require('sitemap-webpack-plugin').default;
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const paths = [
     {
@@ -50,6 +51,11 @@ module.exports = {
         }),
         new webpack.HotModuleReplacementPlugin(),
         new SitemapPlugin({ base: 'https://young.xn--wnux6e.xyz/', paths }),
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: './src/mp3/2.mp3', to: '2.mp3' },
+            ]
+        }),
     ],
     devServer: {
         // contentBase: './dist',

@@ -30,16 +30,19 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-document.onmouseup = document.onkeyup = (event) => {
+document.onmousedown = document.onkeypress = (event) => {
     if (document.getElementById('pop-young').className === 'pop-young-open' && !popYoungSwitch) {
         popYoungCount++;
         document.getElementById('count').textContent = popYoungCount;
         document.getElementById('young-image').className = 'young-image-open';
         popYoungSwitch = true;
+        let audio = new Audio('./2.mp3');
+        audio.volume = 0.5;
+        audio.play();
     }
 };
 
-document.onmousedown = document.onkeypress = (event) => {
+document.onmouseup = document.onkeyup = (event) => {
     if (document.getElementById('pop-young').className === 'pop-young-open' && popYoungSwitch) {
         document.getElementById('count').textContent = popYoungCount;
         document.getElementById('young-image').className = 'young-image-close';
