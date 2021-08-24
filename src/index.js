@@ -9,12 +9,13 @@ let popYoungCount = 0;
 let popYoungSwitch = false;
 
 document.addEventListener('keydown', (event) => {
-    if (popCount === 5) {
+    if (youngCount === 5) {
         document.getElementById('young').className = 'young-close';
-        popCount = 0;
+        youngCount = 0;
     }
-    if (youngCount === 3 && event.cod === 'Escape') {
+    if (popCount === 3 && event.cod === 'Escape') {
         document.getElementById('pop-young').className = 'pop-young-close';
+        popCount = 0;
     }
 
     if (event.code === young[youngCount])
