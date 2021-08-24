@@ -2,7 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const SitemapPlugin = require('sitemap-webpack-plugin').default;
-const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
 const paths = [
     {
@@ -51,7 +50,6 @@ module.exports = {
         }),
         new webpack.HotModuleReplacementPlugin(),
         new SitemapPlugin({ base: 'https://young.xn--wnux6e.xyz/', paths }),
-        new WebpackManifestPlugin(),
     ],
     devServer: {
         // contentBase: './dist',
