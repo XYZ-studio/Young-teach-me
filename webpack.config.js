@@ -1,6 +1,17 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const SitemapPlugin = require('sitemap-webpack-plugin').default;
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+
+const paths = [
+    {
+        path: '/',
+        lastmod: '2021-08-24',
+        priority: 0.9,
+        changefreq: 'monthly'
+    }
+];
 
 module.exports = {
     entry: './src/index.js',
@@ -39,6 +50,8 @@ module.exports = {
             template: `./src/index.html`,
         }),
         new webpack.HotModuleReplacementPlugin(),
+        new SitemapPlugin({ base: 'https://young.xn--wnux6e.xyz/', paths }),
+        new WebpackManifestPlugin(),
     ],
     devServer: {
         // contentBase: './dist',
