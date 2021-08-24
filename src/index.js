@@ -16,11 +16,12 @@ document.addEventListener('keydown', (event) => {
     if (youngCount === 3 && event.cod === 'Escape') {
         document.getElementById('pop-young').className = 'pop-young-close';
     }
+
     if (event.code === young[youngCount])
         youngCount++;
     if (event.code === popYoung[popCount])
         popCount++;
-    
+
     if (youngCount === 5) {
         document.getElementById('young').className = 'young-open';
     }
@@ -29,7 +30,7 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-document.onmouseup = document.onkeypress = (event) => {
+document.onmouseup = document.onkeyup = (event) => {
     if (document.getElementById('pop-young').className === 'pop-young-open' && !popYoungSwitch) {
         popYoungCount++;
         document.getElementById('count').textContent = popYoungCount;
@@ -38,7 +39,7 @@ document.onmouseup = document.onkeypress = (event) => {
     }
 };
 
-document.onmousedown = document.onkeyup = (event) => {
+document.onmousedown = document.onkeypress = (event) => {
     if (document.getElementById('pop-young').className === 'pop-young-open' && popYoungSwitch) {
         document.getElementById('count').textContent = popYoungCount;
         document.getElementById('young-image').className = 'young-image-close';
