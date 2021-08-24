@@ -31,19 +31,17 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-function isMobileDevice() {
-    var mobileDevices = ['Android', 'webOS', 'iPhone', 'iPad', 'iPod', 'BlackBerry', 'Windows Phone']
-    var isMobileDevice = false
-    for (var i = 0; i < mobileDevices.length; i++) {
-        if (navigator.userAgent.match(mobileDevices[i])) {
-            isMobileDevice = true
-        }
-    }
-    return isMobileDevice
-}
+const sleep = (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+};
 
-const down = (event) => {
+document.onmousedown = document.onkeypress = (event) => {
     if (document.getElementById('pop-young').className === 'pop-young-open' && !popYoungSwitch) {
+        (async() => {
+            document.getElementById('count').style = 'font-size: 60px;transform: rotate(-10deg)';
+            await sleep(100);
+            document.getElementById('count').style = '';
+        })();
         popYoungCount++;
         document.getElementById('count').textContent = popYoungCount;
         document.getElementById('young-image').className = 'young-image-open';
@@ -51,39 +49,14 @@ const down = (event) => {
         let audio = new Audio('./2.mp3');
         audio.volume = 0.5;
         audio.play();
+
     }
 };
 
-const seup = (event) => {
+document.onmouseup = document.onkeyup = (event) => {
     if (document.getElementById('pop-young').className === 'pop-young-open' && popYoungSwitch) {
         document.getElementById('count').textContent = popYoungCount;
         document.getElementById('young-image').className = 'young-image-close';
         popYoungSwitch = false;
     }
-};
-
-document.addEventListener('keypress', (event) => {
-    if (!isMobileDevice()) down(event);
-});
-
-document.onmousedown = (event) => {
-    if (!isMobileDevice()) down(event);
-};
-
-document.ontouchstart = document.onkeypress = (event) => {
-    console.log(isMobileDevice())
-    if (isMobileDevice()) down(event);
-};
-
-document.addEventListener('keyup', (event) => {
-    if (!isMobileDevice()) seup(event);
-});
-
-document.onmouseup = (event) => {
-    if (!isMobileDevice()) seup(event);
-};
-
-document.ontouchend = document.onkeyup = (event) => {
-    console.log(isMobileDevice())
-    if (isMobileDevice()) seup(event);
 };
