@@ -31,7 +31,18 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-document.onmousedown = document.onkeypress = (event) => {
+function isMobileDevice() {
+    var mobileDevices = ['Android', 'webOS', 'iPhone', 'iPad', 'iPod', 'BlackBerry', 'Windows Phone']
+    var isMobileDevice = false
+    for (var i = 0; i < mobileDevices.length; i++) {
+        if (navigator.userAgent.match(mobileDevices[i])) {
+            isMobileDevice = true
+        }
+    }
+    return isMobileDevice
+}
+
+const down = (event) => {
     if (document.getElementById('pop-young').className === 'pop-young-open' && !popYoungSwitch) {
         popYoungCount++;
         document.getElementById('count').textContent = popYoungCount;
@@ -43,10 +54,36 @@ document.onmousedown = document.onkeypress = (event) => {
     }
 };
 
-document.onmouseup = document.onkeyup = (event) => {
+const seup = (event) => {
     if (document.getElementById('pop-young').className === 'pop-young-open' && popYoungSwitch) {
         document.getElementById('count').textContent = popYoungCount;
         document.getElementById('young-image').className = 'young-image-close';
         popYoungSwitch = false;
     }
+};
+
+document.addEventListener('keypress', (event) => {
+    if (!isMobileDevice()) down(event);
+});
+
+document.onmousedown = (event) => {
+    if (!isMobileDevice()) down(event);
+};
+
+document.ontouchstart = document.onkeypress = (event) => {
+    console.log(isMobileDevice())
+    if (isMobileDevice()) down(event);
+};
+
+document.addEventListener('keyup', (event) => {
+    if (!isMobileDevice()) seup(event);
+});
+
+document.onmouseup = (event) => {
+    if (!isMobileDevice()) seup(event);
+};
+
+document.ontouchend = document.onkeyup = (event) => {
+    console.log(isMobileDevice())
+    if (isMobileDevice()) seup(event);
 };
