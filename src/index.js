@@ -13,7 +13,7 @@ document.addEventListener('keydown', (event) => {
         document.getElementById('young').className = 'young-close';
         youngCount = 0;
     }
-    if (popCount === 3 && event.cod === 'Escape') {
+    if (popCount === 3 && event.code === 'Escape') {
         document.getElementById('pop-young').className = 'pop-young-close';
         popCount = 0;
     }
