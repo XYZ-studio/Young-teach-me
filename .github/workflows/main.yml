@@ -30,7 +30,7 @@ jobs:
     - name: Commit files
       run: |
         cd ./dist
-        echo "young.xn--wnux6e.xyz" > CNAME
+        echo "young.xn--wnux6e.xn--kpry57d" > CNAME
         git init
         git config --global user.email aijdfajodwsdf@gmail.com
         git config --global user.name xiaoxigua-1
